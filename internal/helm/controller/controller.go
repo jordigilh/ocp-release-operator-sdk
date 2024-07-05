@@ -55,6 +55,7 @@ type WatchOptions struct {
 	SuppressOverrideValues  bool
 	MaxConcurrentReconciles int
 	Selector                metav1.LabelSelector
+	DryRunOption            string
 }
 
 // Add creates a new helm operator controller and adds it to the manager
@@ -69,6 +70,7 @@ func Add(mgr manager.Manager, options WatchOptions) error {
 		ReconcilePeriod:        options.ReconcilePeriod,
 		OverrideValues:         options.OverrideValues,
 		SuppressOverrideValues: options.SuppressOverrideValues,
+		DryRunOption:           options.DryRunOption,
 	}
 
 	// Register the GVK with the schema
